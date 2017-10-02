@@ -156,6 +156,8 @@ tmpfs           3.2G     0  3.2G   0% /run/user/1000
 
 ## Nodo 1
 [root@ip-172-31-11-253 disco1]# ifconfig
+
+```
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
         inet 172.31.11.253  netmask 255.255.240.0  broadcast 172.31.15.255
         inet6 fe80::d2:8fff:fec3:ca04  prefixlen 64  scopeid 0x20<link>
@@ -173,9 +175,12 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 6  bytes 416 (416.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
 
 ## Nodo 2
 [root@ip-172-31-6-79 centos]# ifconfig
+
+```
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
         inet 172.31.6.79  netmask 255.255.240.0  broadcast 172.31.15.255
         inet6 fe80::40:32ff:fe48:e2b2  prefixlen 64  scopeid 0x20<link>
@@ -193,9 +198,12 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 6  bytes 416 (416.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
 
 ## Nodo 3
 [root@ip-172-31-9-51 centos]# ifconfig
+
+```
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
         inet 172.31.9.51  netmask 255.255.240.0  broadcast 172.31.15.255
         inet6 fe80::67:dcff:fea8:535c  prefixlen 64  scopeid 0x20<link>
@@ -213,9 +221,12 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 6  bytes 416 (416.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
 
 ## Nodo 4
 [root@ip-172-31-1-236 centos]# ifconfig
+
+```
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
         inet 172.31.1.236  netmask 255.255.240.0  broadcast 172.31.15.255
         inet6 fe80::39:64ff:fed2:730a  prefixlen 64  scopeid 0x20<link>
@@ -233,9 +244,11 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 6  bytes 416 (416.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
 		
 # 6. Network check
 
+```
 [root@ip-172-31-11-253 disco1]# nslookup 172.31.11.253
 Server:         172.31.0.2
 Address:        172.31.0.2#53
@@ -305,9 +318,11 @@ Address:        172.31.0.2#53
 Non-authoritative answer:
 Name:   ip-172-31-1-236.us-east-2.compute.internal
 Address: 172.31.1.236
+```
 
 # 6. nscd
 
+```
 [root@ip-172-31-11-253 disco1]# systemctl start nscd
 [root@ip-172-31-11-253 disco1]# systemctl enable nscd
 Created symlink from /etc/systemd/system/multi-user.target.wants/nscd.service to /usr/lib/systemd/system/nscd.service.
@@ -331,15 +346,19 @@ Oct 02 17:04:06 ip-172-31-11-253 systemd[1]: Started Name Service Cache Daemon.
 Oct 02 17:04:25 ip-172-31-11-253 nscd[18017]: 18017 checking for monitored ...y
 Oct 02 17:04:29 ip-172-31-11-253 systemd[1]: Started Name Service Cache Daemon.
 Hint: Some lines were ellipsized, use -l to show in full.
-
+```
 
 # 7. ntpd
 
 https://www.cloudera.com/documentation/enterprise/5-5-x/topics/install_cdh_enable_ntp.html
 
+```
 [root@ip-172-31-11-253 disco1]# vi /etc/ntp.conf
 
 [root@ip-172-31-11-253 disco1]# cat /etc/ntp.conf
+```
+
+```
 \# For more information about this file, see the man pages
 \# ntp.conf(5), ntp_acc(5), ntp_auth(5), ntp_clock(5), ntp_misc(5), ntp_mon(5).
 
@@ -376,30 +395,30 @@ server 2.pool.ntp.org
 
 includefile /etc/ntp/crypto/pw
 
-\# Key file containing the keys and key identifiers used when operating
-\# with symmetric key cryptography.
+# Key file containing the keys and key identifiers used when operating
+# with symmetric key cryptography.
 keys /etc/ntp/keys
 
-\# Specify the key identifiers which are trusted.
-\#trustedkey 4 8 42
+# Specify the key identifiers which are trusted.
+#trustedkey 4 8 42
 
-\# Specify the key identifier to use with the ntpdc utility.
-\#requestkey 8
+# Specify the key identifier to use with the ntpdc utility.
+#requestkey 8
 
-\# Specify the key identifier to use with the ntpq utility.
-\#controlkey 8
+# Specify the key identifier to use with the ntpq utility.
+#controlkey 8
 
-\# Enable writing of statistics records.
-\#statistics clockstats cryptostats loopstats peerstats
+# Enable writing of statistics records.
+#statistics clockstats cryptostats loopstats peerstats
 
-\# Disable the monitoring facility to prevent amplification attacks using ntpdc
-\# monlist command when default restrict does not include the noquery flag. See
-\# CVE-2013-5211 for more details.
-\# Note: Monitoring will not be disabled with the limited restriction flag.
+# Disable the monitoring facility to prevent amplification attacks using ntpdc
+# monlist command when default restrict does not include the noquery flag. See
+# CVE-2013-5211 for more details.
+# Note: Monitoring will not be disabled with the limited restriction flag.
 disable monitor
+```
 
-
-
+```
 [root@ip-172-31-11-253 disco1]# systemctl disable chronyd
 Removed symlink /etc/systemd/system/multi-user.target.wants/chronyd.service.
 [root@ip-172-31-11-253 disco1]# chkconfig ntpd on
@@ -428,3 +447,4 @@ Oct 02 17:18:05 ip-172-31-11-253 ntpd[18150]: 0.0.0.0 c012 02 freq_set kern...M
 Oct 02 17:18:05 ip-172-31-11-253 ntpd[18150]: 0.0.0.0 c011 01 freq_not_set
 Oct 02 17:21:23 ip-172-31-11-253 ntpd[18150]: 0.0.0.0 c614 04 freq_mode
 Hint: Some lines were ellipsized, use -l to show in full.
+```
