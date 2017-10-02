@@ -220,7 +220,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         TX packets 6  bytes 416 (416.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 		
-#6. Network check
+# 6. Network check
 
 [root@ip-172-31-11-253 disco1]# nslookup 172.31.11.253
 Server:         172.31.0.2
