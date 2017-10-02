@@ -17,14 +17,15 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/mariadb.service
 [root@ip-172-31-11-253 backup]# mv /var/lib/mysql/ib_logfile0 .
 [root@ip-172-31-11-253 backup]# mv /var/lib/mysql/ib_logfile1 .
 
+# 2. my.cnf
 
 [root@ip-172-31-11-253 backup]# vi /etc/my.cnf
 [root@ip-172-31-11-253 backup]# cat /etc/my.cnf
 [mysqld]
 transaction-isolation = READ-COMMITTED
-# Disabling symbolic-links is recommended to prevent assorted security risks;
-# to do so, uncomment this line:
-# symbolic-links = 0
+#Disabling symbolic-links is recommended to prevent assorted security risks;
+#to do so, uncomment this line:
+#symbolic-links = 0
 
 key_buffer = 16M
 key_buffer_size = 32M
@@ -50,7 +51,7 @@ read_rnd_buffer_size = 16M
 sort_buffer_size = 8M
 join_buffer_size = 8M
 
-# InnoDB settings
+#InnoDB settings
 innodb_file_per_table = 1
 innodb_flush_log_at_trx_commit  = 2
 innodb_log_buffer_size = 64M
@@ -84,8 +85,11 @@ pid-file=/var/run/mariadb/mariadb.pid
 
 [root@ip-172-31-11-253 mariadb]# systemctl start mariadb
 
+# 3. setup
+
 [root@ip-172-31-11-253 mariadb]# sudo /usr/bin/mysql_secure_installation
 
+```
 NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
       SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
 
@@ -145,4 +149,4 @@ All done!  If you've completed all of the above steps, your MariaDB
 installation should now be secure.
 
 Thanks for using MariaDB!
- 
+```
