@@ -4,6 +4,10 @@ yum -y install net-tools
 yum -y install bind-utils ntp nscd
 yum -y install wget
 
+SELinux deshabilitado en esta ami
+[root@ip-172-31-1-236 centos]# getenforce
+Disabled
+
 
 # 1. Swappiness
 [root@ip-172-31-11-253 disco1]# cat /proc/sys/vm/swappiness
@@ -88,8 +92,9 @@ UUID=91d69548-0773-4535-ae44-2771645dd05e      /disco2       ext4     defaults  
 ## Nodo 1
 
 [root@ip-172-31-11-253 disco1]# df -h
-<code>
+
 Filesystem      Size  Used Avail Use% Mounted on
+
 /dev/xvda1       50G  2.3G   48G   5% /
 devtmpfs         16G     0   16G   0% /dev
 tmpfs            16G     0   16G   0% /dev/shm
@@ -98,7 +103,7 @@ tmpfs            16G     0   16G   0% /sys/fs/cgroup
 tmpfs           3.2G     0  3.2G   0% /run/user/1000
 /dev/xvdc       118G   61M  112G   1% /disco2
 /dev/xvdb       118G   61M  112G   1% /disco1
-</code>
+
 
 ## Nodo 2
 
