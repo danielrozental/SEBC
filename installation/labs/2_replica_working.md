@@ -2,7 +2,7 @@
 
 https://www.cloudera.com/documentation/enterprise/5-5-x/topics/install_cm_mariadb.html#install_cm_mariadb_install
 
-
+```
 [root@ip-172-31-11-253 disco1]# yum -y install mariadb-server
 ...
 Complete!
@@ -16,11 +16,16 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/mariadb.service
 [root@ip-172-31-11-253 mysql]# cd /root/backup
 [root@ip-172-31-11-253 backup]# mv /var/lib/mysql/ib_logfile0 .
 [root@ip-172-31-11-253 backup]# mv /var/lib/mysql/ib_logfile1 .
+```
 
 # 2. my.cnf
 
+```
 [root@ip-172-31-11-253 backup]# vi /etc/my.cnf
 [root@ip-172-31-11-253 backup]# cat /etc/my.cnf
+```
+
+```
 [mysqld]
 transaction-isolation = READ-COMMITTED
 #Disabling symbolic-links is recommended to prevent assorted security risks;
@@ -81,10 +86,11 @@ log-basename=master1       #master2 in mas2.internal, no va el hostname
 [mysqld_safe]
 log-error=/var/log/mariadb/mariadb.log
 pid-file=/var/run/mariadb/mariadb.pid
+```
 
-
+```
 [root@ip-172-31-11-253 mariadb]# systemctl start mariadb
-
+```
 # 3. setup
 
 [root@ip-172-31-11-253 mariadb]# sudo /usr/bin/mysql_secure_installation
