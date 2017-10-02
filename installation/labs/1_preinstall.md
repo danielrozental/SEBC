@@ -5,88 +5,97 @@ yum -y install bind-utils ntp nscd
 yum -y install wget
 
 SELinux deshabilitado en esta ami
+```
 [root@ip-172-31-1-236 centos]# getenforce
 Disabled
-
+```
 
 # 1. Swappiness
+```
 [root@ip-172-31-11-253 disco1]# cat /proc/sys/vm/swappiness
 30
+```
 
 swappiness está en 30, lo cambio a 1
-
+```
 [root@ip-172-31-11-253 disco1]# sysctl -w vm.swappiness=1
 vm.swappiness = 1
 [root@ip-172-31-11-253 disco1]# cat /proc/sys/vm/swappiness                    1
 1
+```
 
 # 2. Mount atributes
 
 [root@ip-172-31-11-253 disco1]# cat /etc/fstab
-
-\#
-\# /etc/fstab
-\# Created by anaconda on Mon Feb 22 17:08:22 2016
-\#
-\# Accessible filesystems, by reference, are maintained under '/dev/disk'
-\# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
-\#
-\#UUID=ef6ba050-6cdc-416a-9380-c14304d0d206      /       xfs     defaults      0 0
-\#/dev/xvdb      /mnt    auto    defaults,nofail,comment=cloudconfig     0     2
+```
+#
+# /etc/fstab
+# Created by anaconda on Mon Feb 22 17:08:22 2016
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+#UUID=ef6ba050-6cdc-416a-9380-c14304d0d206      /       xfs     defaults      0 0
+#/dev/xvdb      /mnt    auto    defaults,nofail,comment=cloudconfig     0     2
 UUID=8768ad9f-5083-4c20-92e7-836fa1a22481      /disco1       ext4     defaults        0 0
 /dev/xvdb      /mnt    auto    defaults,nofail,comment=cloudconfig     0       2
 UUID=7c8ba329-983a-4a3d-be88-52bdc1295be0      /disco2       ext4     defaults        0 0
 /dev/xvdc      /mnt    auto    defaults,nofail,comment=cloudconfig     0       2
-
+```
 
 [root@ip-172-31-6-79 centos]# cat /etc/fstab
 
-\#
-\# /etc/fstab
-\# Created by anaconda on Mon Feb 22 17:08:22 2016
-\#
-\# Accessible filesystems, by reference, are maintained under '/dev/disk'
-\# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
-\#
-\#UUID=ef6ba050-6cdc-416a-9380-c14304d0d206      /       xfs     defaults        0 0
-\#/dev/xvdb      /mnt    auto    defaults,nofail,comment=cloudconfig     0       2
+```
+#
+# /etc/fstab
+# Created by anaconda on Mon Feb 22 17:08:22 2016
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+#UUID=ef6ba050-6cdc-416a-9380-c14304d0d206      /       xfs     defaults        0 0
+#/dev/xvdb      /mnt    auto    defaults,nofail,comment=cloudconfig     0       2
 UUID=1ee72892-803c-4bc2-b828-95cc73f6437a      /disco1       ext4     defaults        0 0
 /dev/xvdb      /mnt    auto    defaults,nofail,comment=cloudconfig     0       2
 UUID=c37c2019-4ff0-4464-9096-05f5567d178a      /disco2       ext4     defaults        0 0
 /dev/xvdc      /mnt    auto    defaults,nofail,comment=cloudconfig     0       2
+```
 
 [root@ip-172-31-9-51 centos]# cat /etc/fstab
 
-\#
-\# /etc/fstab
-\# Created by anaconda on Mon Feb 22 17:08:22 2016
-\#
-\# Accessible filesystems, by reference, are maintained under '/dev/disk'
-\# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
-\#
-\#UUID=ef6ba050-6cdc-416a-9380-c14304d0d206      /       xfs     defaults      0 0
-\#/dev/xvdb      /mnt    auto    defaults,nofail,comment=cloudconfig     0     2
+```
+#
+# /etc/fstab
+# Created by anaconda on Mon Feb 22 17:08:22 2016
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+#UUID=ef6ba050-6cdc-416a-9380-c14304d0d206      /       xfs     defaults      0 0
+#/dev/xvdb      /mnt    auto    defaults,nofail,comment=cloudconfig     0     2
 UUID=2f8c62c3-f677-4b26-8ea0-867c4be0811b      /disco1       ext4     defaults        0 0
 /dev/xvdb      /mnt    auto    defaults,nofail,comment=cloudconfig     0       2
 UUID=5545cd71-c66f-42a9-9562-b377b7754e3a      /disco2       ext4     defaults        0 0
 /dev/xvdc      /mnt    auto    defaults,nofail,comment=cloudconfig     0       2
+```
 
 [root@ip-172-31-1-236 centos]# cat /etc/fstab
 
-\#
-\# /etc/fstab
-\# Created by anaconda on Mon Feb 22 17:08:22 2016
-\#
-\# Accessible filesystems, by reference, are maintained under '/dev/disk'
-\# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
-\#
-\#UUID=ef6ba050-6cdc-416a-9380-c14304d0d206      /       xfs     defaults        0 0
-\#/dev/xvdb      /mnt    auto    defaults,nofail,comment=cloudconfig     0       2
+```
+#
+# /etc/fstab
+# Created by anaconda on Mon Feb 22 17:08:22 2016
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+#UUID=ef6ba050-6cdc-416a-9380-c14304d0d206      /       xfs     defaults        0 0
+#/dev/xvdb      /mnt    auto    defaults,nofail,comment=cloudconfig     0       2
 UUID=5d179de4-8726-4582-8106-52a5daf28db1      /disco1       ext4     defaults        0 0
 /dev/xvdb      /mnt    auto    defaults,nofail,comment=cloudconfig     0       2
 UUID=91d69548-0773-4535-ae44-2771645dd05e      /disco2       ext4     defaults        0 0
 /dev/xvdc      /mnt    auto    defaults,nofail,comment=cloudconfig     0       2
-
+```
 
 # 3. Free space
 ## Nodo 1
@@ -359,39 +368,39 @@ https://www.cloudera.com/documentation/enterprise/5-5-x/topics/install_cdh_enabl
 ```
 
 ```
-\# For more information about this file, see the man pages
-\# ntp.conf(5), ntp_acc(5), ntp_auth(5), ntp_clock(5), ntp_misc(5), ntp_mon(5).
+# For more information about this file, see the man pages
+# ntp.conf(5), ntp_acc(5), ntp_auth(5), ntp_clock(5), ntp_misc(5), ntp_mon(5).
 
 driftfile /var/lib/ntp/drift
 
-\# Permit time synchronization with our time source, but do not
-\# permit the source to query or modify the service on this system.
+# Permit time synchronization with our time source, but do not
+# permit the source to query or modify the service on this system.
 restrict default nomodify notrap nopeer noquery
 
-\# Permit all access over the loopback interface.  This could
-\# be tightened as well, but to do so would effect some of
-\# the administrative functions.
+# Permit all access over the loopback interface.  This could
+# be tightened as well, but to do so would effect some of
+# the administrative functions.
 restrict 127.0.0.1
 restrict ::1
 
-\# Hosts on local network are less restricted.
-\#restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
+# Hosts on local network are less restricted.
+#restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
 
-\# Use public servers from the pool.ntp.org project.
-\# Please consider joining the pool (http://www.pool.ntp.org/join.html).
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (http://www.pool.ntp.org/join.html).
 server 0.pool.ntp.org
 server 1.pool.ntp.org
 server 2.pool.ntp.org
 
-\#broadcast 192.168.1.255 autokey        # broadcast server
-\#broadcastclient                        # broadcast client
-\#broadcast 224.0.1.1 autokey            # multicast server
-\#multicastclient 224.0.1.1              # multicast client
-\#manycastserver 239.255.254.254         # manycast server
-\#manycastclient 239.255.254.254 autokey # manycast client
+#broadcast 192.168.1.255 autokey        # broadcast server
+#broadcastclient                        # broadcast client
+#broadcast 224.0.1.1 autokey            # multicast server
+#multicastclient 224.0.1.1              # multicast client
+#manycastserver 239.255.254.254         # manycast server
+#manycastclient 239.255.254.254 autokey # manycast client
 
-\# Enable public key cryptography.
-\#crypto
+# Enable public key cryptography.
+#crypto
 
 includefile /etc/ntp/crypto/pw
 
