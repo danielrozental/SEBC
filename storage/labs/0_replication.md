@@ -1,3 +1,5 @@
+http://www.michael-noll.com/blog/2011/04/09/benchmarking-and-stress-testing-an-hadoop-cluster-with-terasort-testdfsio-nnbench-mrbench/
+
 # 1. Creo los directorios
 
 [hdfs@ip-172-31-11-253 centos]$ sudo su hdfs
@@ -173,4 +175,80 @@ Found 5 items
 -rw-r--r--   3 hdfs supergroup          0 2017-10-03 14:19 /user/hdfs/wjguerrero/.distcp.tmp.attempt_local2145125088_0001_m_000000_0
 -rw-r--r--   3 hdfs supergroup          0 2017-10-03 14:17 /user/hdfs/wjguerrero/.distcp.tmp.attempt_local521761410_0001_m_000000_0
 -rw-r--r--   3 hdfs supergroup  262144000 2017-10-03 14:23 /user/hdfs/wjguerrero/part-m-00001
+```
+
+# 5. Verificacion
+
+```
+[hdfs@ip-172-31-11-253 centos]$ hdfs fsck /user/hdfs/danielrozental/teragen -files -blocks
+Connecting to namenode via http://ip-172-31-1-236.us-east-2.compute.internal:50070
+FSCK started by hdfs (auth:SIMPLE) from /172.31.11.253 for path /user/hdfs/danielrozental/teragen at Tue Oct 03 14:33:18 UTC 2017
+/user/hdfs/danielrozental/teragen <dir>
+/user/hdfs/danielrozental/teragen/_SUCCESS 0 bytes, 0 block(s):  OK
+
+/user/hdfs/danielrozental/teragen/part-m-00000 524288000 bytes, 4 block(s):  OK
+0. BP-819061135-172.31.1.236-1506978755532:blk_1073743495_2671 len=134217728 Live_repl=3
+1. BP-819061135-172.31.1.236-1506978755532:blk_1073743496_2672 len=134217728 Live_repl=3
+2. BP-819061135-172.31.1.236-1506978755532:blk_1073743497_2673 len=134217728 Live_repl=3
+3. BP-819061135-172.31.1.236-1506978755532:blk_1073743498_2674 len=121634816 Live_repl=3
+
+Status: HEALTHY
+ Total size:    524288000 B
+ Total dirs:    1
+ Total files:   2
+ Total symlinks:                0
+ Total blocks (validated):      4 (avg. block size 131072000 B)
+ Minimally replicated blocks:   4 (100.0 %)
+ Over-replicated blocks:        0 (0.0 %)
+ Under-replicated blocks:       0 (0.0 %)
+ Mis-replicated blocks:         0 (0.0 %)
+ Default replication factor:    3
+ Average block replication:     3.0
+ Corrupt blocks:                0
+ Missing replicas:              0 (0.0 %)
+ Number of data-nodes:          3
+ Number of racks:               1
+FSCK ended at Tue Oct 03 14:33:18 UTC 2017 in 3 milliseconds
+
+
+The filesystem under path '/user/hdfs/danielrozental/teragen' is HEALTHY
+```
+
+```
+[hdfs@ip-172-31-11-253 centos]$ hdfs fsck /user/hdfs/wjguerrero -files -blocks
+Connecting to namenode via http://ip-172-31-1-236.us-east-2.compute.internal:50070
+FSCK started by hdfs (auth:SIMPLE) from /172.31.11.253 for path /user/hdfs/wjguerrero at Tue Oct 03 14:33:24 UTC 2017
+/user/hdfs/wjguerrero <dir>
+/user/hdfs/wjguerrero/.distcp.tmp.attempt_local1445819241_0001_m_000000_0 0 bytes, 0 block(s):  OK
+
+/user/hdfs/wjguerrero/.distcp.tmp.attempt_local1808963728_0001_m_000000_0 0 bytes, 0 block(s):  OK
+
+/user/hdfs/wjguerrero/.distcp.tmp.attempt_local2145125088_0001_m_000000_0 0 bytes, 0 block(s):  OK
+
+/user/hdfs/wjguerrero/.distcp.tmp.attempt_local521761410_0001_m_000000_0 0 bytes, 0 block(s):  OK
+
+/user/hdfs/wjguerrero/part-m-00001 262144000 bytes, 2 block(s):  OK
+0. BP-819061135-172.31.1.236-1506978755532:blk_1073743540_2716 len=134217728 Live_repl=3
+1. BP-819061135-172.31.1.236-1506978755532:blk_1073743541_2717 len=127926272 Live_repl=3
+
+Status: HEALTHY
+ Total size:    262144000 B
+ Total dirs:    1
+ Total files:   5
+ Total symlinks:                0
+ Total blocks (validated):      2 (avg. block size 131072000 B)
+ Minimally replicated blocks:   2 (100.0 %)
+ Over-replicated blocks:        0 (0.0 %)
+ Under-replicated blocks:       0 (0.0 %)
+ Mis-replicated blocks:         0 (0.0 %)
+ Default replication factor:    3
+ Average block replication:     3.0
+ Corrupt blocks:                0
+ Missing replicas:              0 (0.0 %)
+ Number of data-nodes:          3
+ Number of racks:               1
+FSCK ended at Tue Oct 03 14:33:24 UTC 2017 in 2 milliseconds
+
+
+The filesystem under path '/user/hdfs/wjguerrero' is HEALTHY
 ```
