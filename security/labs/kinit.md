@@ -1,3 +1,4 @@
+```
 [root@ip-172-31-11-253 centos]# kadmin.local
 Authenticating as principal root/admin@DANIEL.COM with password.
 kadmin.local:  addprinc danielrozental@DANIEL.COM
@@ -16,3 +17,4 @@ Default principal: danielrozental@DANIEL.COM
 Valid starting       Expires              Service principal
 10/04/2017 15:25:23  10/05/2017 15:25:23  krbtgt/DANIEL.COM@DANIEL.COM
         renew until 10/11/2017 15:25:23
+```

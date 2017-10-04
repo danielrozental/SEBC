@@ -1,3 +1,4 @@
+```
 [libdefaults]
 default_realm = DANIEL.COM
 dns_lookup_kdc = false
@@ -15,3 +16,4 @@ DANIEL.COM = {
 kdc = ip-172-31-11-253.us-east-2.compute.internal
 admin_server = ip-172-31-11-253.us-east-2.compute.internal
 }
+```
