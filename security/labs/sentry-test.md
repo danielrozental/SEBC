@@ -203,6 +203,8 @@ INFO  : OK
 4 rows selected (0.277 seconds)
 ```
 
+# Repeat the process as ferdinand
+
 ```
 [root@ip-172-31-11-253 centos]# sudo su ferdinand
 [ferdinand@ip-172-31-11-253 centos]$ kinit
