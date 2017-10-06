@@ -103,6 +103,8 @@ repolist: 10,089
 ```
 
 # Add the following Linux accounts to all nodes
+
+```
 [root@ip-172-31-35-178 centos]# useradd saturn -u 2800
 [root@ip-172-31-35-178 centos]# useradd haley -u 2900
 [root@ip-172-31-35-178 centos]#
@@ -170,4 +172,4 @@ haley:x:2900:2900::/home/haley:/bin/bash
 [root@ip-172-31-33-183 centos]# cat /etc/group | grep -E "comets|planets"
 comets:x:2901:haley
 planets:x:2902:saturn
-
+```
